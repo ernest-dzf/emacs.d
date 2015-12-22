@@ -1,7 +1,8 @@
-
+;;; init.el --- fist-loaded file
+;;; Commentary:
 ;;; This file bootstraps the configuration, which is divided into
 ;;; a number of other files.
-
+;;; Code:
 (let ((minver "23.3"))
   (when (version<= emacs-version "23.1")
     (error "Your Emacs is too old -- this config requires v%s or higher" minver)))
@@ -114,6 +115,10 @@
 
 (require 'init-dash)
 (require 'init-ledger)
+;;----------------------------------------------------------------------------
+;;third-party packages init here
+(require 'init-tabbar)
+;;----------------------------------------------------------------------------
 ;; Extra packages which don't require any configuration
 
 (require-package 'gnuplot)
@@ -140,11 +145,11 @@
 
 
 ;;----------------------------------------------------------------------------
-;; Allow users to provide an optional "init-local" containing personal settings
+;; Allow users to provide an optional "init-personal-setting" containing personal settings
 ;;----------------------------------------------------------------------------
-(when (file-exists-p (expand-file-name "init-local.el" user-emacs-directory))
-  (error "Please move init-local.el to ~/.emacs.d/lisp"))
-(require 'init-local nil t)
+(when (file-exists-p (expand-file-name "init-personal-setting.el" user-emacs-directory))
+  (error "Please move init-personal.el to ~/.emacs.d/lisp"))
+(require 'init-personal-setting nil t)
 
 
 ;;----------------------------------------------------------------------------
@@ -164,3 +169,4 @@
 ;; coding: utf-8
 ;; no-byte-compile: t
 ;; End:
+;;; init.el ends here
