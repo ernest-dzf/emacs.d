@@ -1,0 +1,16 @@
+#+TITLE: To make emacs better for you
+* 关于系统拦截emacs设置的快捷键的问题
+  将系统快捷键都屏蔽掉,建议只留下Alt+Tab, Alt+Shift+Tab, Alt+F4, Alt+F7以及 Alt+Ctrl+t这几个快捷键. 以 Ubuntu14.04 为例, 方法如下:\\
++ 系统设置->键盘->快捷键, 可以看到各种各样的快捷键, 除了上面提到的这5个快捷键, 其他的都给禁掉.鼠标点击, 然后按Backspace即可禁掉.
++ 如果你使用的是fcitx框架的输入法, 如sogou输入法, 在terminal中输入 fcitx-configtool, 进入fcitx的配置页面, 将你认为没有多大用的快捷键都禁掉.
++ 如果你使用的是搜狗输入法, 在sougou输入法的设置页面, 将你认为没多大用的快捷键禁掉.
++ sudo apt-get install gconf-editor, 安装完成后, apps->gnome-terminal->global->use-mnemonics, 将钩取消掉; apps->gnome-terminal->global->use-menu-accelerators, 将钩取消掉. 这主要是解决Alt键的冲突问题.
++ 安装Unity Tweak Tool, 进入设置界面, 仔细看一下, 哪些快捷键没有用, 将他们禁掉.
++ 安装CompizeConfig, 进入Ubuntu Unity Plugin设置页面, 将没用的快捷键禁掉. 如锁屏快捷键Super+l, 强烈建议强其禁掉.
++ 最后, 你会发现Super+p这个组合键没被禁掉, 这个是视频, 投影的时候会用到的快捷键. 方法如下:
+  + 在$HOME/目录下面创建.xsessionrc文件, 写入如下内容:\\
+    xbindkeys -f $HOME/.xbindkeysrc-super+p
+  + 还是在$HOME/目录下面创建.xbindkeysrc-super+p文件, 写入如下内容:\\
+    "pkill xbindkeys"
+
+     mod4 + p
